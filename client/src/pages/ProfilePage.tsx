@@ -1,11 +1,11 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react'
-import {ProfileInfo} from "../components/user/ProfileInfo"
-import {useMessage} from "../hooks/messageHook"
-import {useRequest} from "../hooks/hookRequests"
-import {Preloader} from "../components/common/Preloader"
-import {AuthContext} from "../context/AuthContext"
-import {Redirect} from "react-router-dom"
-import {IUser} from "../Interface/IUser"
+import {ProfileInfo} from '../components/user/ProfileInfo'
+import {useMessage} from '../hooks/messageHook'
+import {useRequest} from '../hooks/hookRequests'
+import {Preloader} from '../components/common/Preloader'
+import {AuthContext} from '../context/AuthContext'
+import {Redirect} from 'react-router-dom'
+import {IUser} from '../Interface/IUser'
 
 export const ProfilePage = () => {
     const {token, userId, logout} = useContext(AuthContext)

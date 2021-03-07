@@ -1,18 +1,18 @@
-import React, { useContext, useEffect, useState } from "react"
-import { useRequest } from "../hooks/hookRequests"
-import { Redirect, Route, Switch } from "react-router-dom"
-import { Login } from "../components/auth/login"
-import { Register } from "../components/auth/register"
-import { useMessage } from "../hooks/messageHook"
-import { AuthContext } from "../context/AuthContext"
-import { useHistory } from "react-router"
+import React, { useContext, useEffect, useState } from 'react'
+import { useRequest } from '../hooks/hookRequests'
+import { Redirect, Route, Switch } from 'react-router-dom'
+import { Login } from '../components/auth/login'
+import { Register } from '../components/auth/register'
+import { useMessage } from '../hooks/messageHook'
+import { AuthContext } from '../context/AuthContext'
+import { useHistory } from 'react-router'
 
 export const AuthPage: React.FC = () => {
     const auth = useContext(AuthContext)
     const message = useMessage()
     const history = useHistory()
     const { loading, error, req, clearError } = useRequest()
-    const [form, setForm] = useState({ name: "", lastName: "", email: "", password: "" })
+    const [form, setForm] = useState({ name: '', lastName: '', email: '', password: '' })
 
     useEffect(() => {
         message(error)
@@ -48,11 +48,11 @@ export const AuthPage: React.FC = () => {
     }
 
     return (
-        <div className="row">
-            <div className="col s6 offset-s3">
-                <h1 className="txt-al-center">My Todo List</h1>
+        <div className='row'>
+            <div className='col s6 offset-s3'>
+                <h1 className='txt-al-center'>My Todo List</h1>
                 <Switch>
-                    <Route path="/login">
+                    <Route path='/login'>
                         <Login
                             data={form}
                             loading={loading}
@@ -60,7 +60,7 @@ export const AuthPage: React.FC = () => {
                             loginHandler={loginHandler}
                         />
                     </Route>
-                    <Route path="/register">
+                    <Route path='/register'>
                         <Register
                             data={form}
                             loading={loading}
@@ -68,7 +68,7 @@ export const AuthPage: React.FC = () => {
                             registerHandler={registerHandler}
                         />
                     </Route>
-                    <Redirect to="/login" />
+                    <Redirect to='/login' />
                 </Switch>
             </div>
         </div>
