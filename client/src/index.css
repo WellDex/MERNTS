@@ -1,0 +1,135 @@
+@import "~materialize-css/dist/css/materialize.min.css";
+
+.dflex-sb {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-card {
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+input.yellow-input {
+    border-bottom: 1px solid #fff !important;
+    box-shadow: 0 1px 0 0 #fff !important;
+}
+
+input.yellow-input + label {
+    color: #fff !important;
+}
+
+input.yellow-input:focus + label {
+    color: #fff !important;
+}
+
+input.yellow-input:focus {
+    border-bottom: 1px solid #ffeb3b !important;
+    box-shadow: 0 1px 0 0 #ffeb3b !important;
+}
+
+.txt-al-center {
+    text-align: center;
+}
+
+.pd-l-10 {
+    padding-left: 10px;
+}
+
+.mg-top-10 {
+    margin-top: 10px;
+}
+
+.todo {
+    display: flex;
+    align-items: center;
+}
+
+/*accordion*/
+
+.active .collapsible-body {
+    display: flex;
+    align-items: center;
+}
+
+/*/accordion*/
+
+.collapsible-header span {
+    display: inline-flex;
+}
+
+.custom-input {
+    height: 20px !important;
+    width: fit-content !important;
+}
+
+.pos-rel {
+    position: relative;
+}
+
+.block-del-pos {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    top: 17px;
+    right: 0;
+}
+
+.dflex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.pad-top-2rem {
+    padding-top: 2rem;
+}
+
+.helpers {
+    color: #ffcdd2;
+    letter-spacing: 5px;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.cur-pointer {
+    cursor: pointer;
+}
+
+.none-style-a {
+    color: #000;
+    text-decoration: none;
+}
+
+.float-right {
+    float: right;
+}
+
+.shadow{
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, .4);
+    z-index: 1;
+}
+
+.show-todo-user-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 300px;
+    height: 150px;
+}
+
+.pos-rel {
+    position: relative;
+}
+
+.pos-btn-close{
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
