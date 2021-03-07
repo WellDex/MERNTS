@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from "react-router-dom"
+import { VoidFunction } from '../../types/commonTypes'
 
 type RegisterPropsType = {
     data: {
@@ -10,7 +11,7 @@ type RegisterPropsType = {
     },
     loading: boolean,
     changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    registerHandler: () => void
+    registerHandler: VoidFunction
 }
 
 export const Register: React.FC<RegisterPropsType> = (props) => {

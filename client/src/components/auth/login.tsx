@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from "react-router-dom"
+import { VoidFunction } from '../../types/commonTypes'
 
 type LoginPropsType = {
     data: {
@@ -8,7 +9,7 @@ type LoginPropsType = {
     },
     loading: boolean,
     changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    loginHandler: () => void
+    loginHandler: VoidFunction
 }
 
 export const Login: React.FC<LoginPropsType> = (props) => {

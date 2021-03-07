@@ -6,6 +6,7 @@ import { Register } from '../components/auth/register'
 import { useMessage } from '../hooks/messageHook'
 import { AuthContext } from '../context/AuthContext'
 import { useHistory } from 'react-router'
+import { VoidFunction } from '../types/commonTypes'
 
 export const AuthPage: React.FC = () => {
     const auth = useContext(AuthContext)
@@ -19,11 +20,11 @@ export const AuthPage: React.FC = () => {
         clearError()
     }, [error, message, clearError])
 
-    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
 
-    const registerHandler = async () => {
+    const registerHandler: VoidFunction = async () => {
         try {
             const data = await req('/api/auth/register', 'POST', { ...form })
             message(data.message)
@@ -34,7 +35,7 @@ export const AuthPage: React.FC = () => {
         }
     }
 
-    const loginHandler = async () => {
+    const loginHandler: VoidFunction = async () => {
         try {
             const data = await req('/api/auth/login', 'POST', { email: form.email, password: form.password })
             if (data.isBanned) {
