@@ -5,6 +5,7 @@ import { Todo } from "../components/todo/Todo"
 import { AuthContext } from "../context/AuthContext"
 import { Preloader } from "../components/common/Preloader"
 import { ITodo } from "../Interface/ITodo"
+import { VoidFunction } from '../types/commonTypes'
 
 type FormPropsType = {
     id: number | null,
@@ -21,7 +22,7 @@ export const TodoListPage = () => {
     const [form, setForm] = useState<FormPropsType>({ id: null, name: "", description: "", isCondition: false, dateEx: null })
     const [todos, setTodos] = useState<Array<ITodo>>([])
 
-    const getTodos = useCallback(async () => {
+    const getTodos: VoidFunction = useCallback(async () => {
         try {
             const data = await req('/api/todo/', 'GET', null, {
                 Authorization: `Bearer ${token}`
@@ -42,7 +43,7 @@ export const TodoListPage = () => {
         clearError()
     }, [error, message, clearError])
 
-    const changeIsCondition = async (id: number) => {
+    const changeIsCondition: (id: number) => void = async (id: number) => {
         try {
             const data = await req('/api/todo/toggleCondition', 'POST', { id })
 
@@ -53,7 +54,7 @@ export const TodoListPage = () => {
         }
     }
 
-    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>, id: number): void => {
         const todo = todos.find(el => el._id === id) as ITodo
 
         if (e.target.name === 'name') {
@@ -77,7 +78,7 @@ export const TodoListPage = () => {
         }
     }
 
-    const updateTodo = () => {
+    const updateTodo: VoidFunction = () => {
         updateTodoHandler().then(() => {
             getTodos()
         })
@@ -96,7 +97,7 @@ export const TodoListPage = () => {
         }
     }
 
-    const deleteTodoHandler = async (id: number) => {
+    const deleteTodoHandler: (id: number) => void = async (id: number) => {
         try {
             const data = await req('/api/todo/delete', 'DELETE', { id }, {
                 Authorization: `Bearer ${token}`

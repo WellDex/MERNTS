@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { VoidFunction } from '../../types/commonTypes'
 import { MyMoment } from "../common/MyMoment"
 import { ShowAndEditTodo } from "./ShowAndEditTodo"
 
@@ -9,24 +10,24 @@ type TodoPropsType = {
     deleteTodoHandler: (id: number) => void,
     changeHandler: (e: React.ChangeEvent<HTMLInputElement>, id: number) => void,
     name: string,
-    updateTodo: () => void,
+    updateTodo: VoidFunction,
     dateEx: string,
     id: number,
     description: string | undefined
 }
 
 export const Todo: React.FC<TodoPropsType> = (props) => {
-    const [isActive, setActive] = useState(false)
-    const [editMode, setEditMode] = useState([false, false]) //1-name 2-description
+    const [isActive, setActive] = useState<boolean>(false)
+    const [editMode, setEditMode] = useState<boolean[]>([false, false]) //1-name 2-description
 
-    const toggleActiveClass = () => {
+    const toggleActiveClass: VoidFunction = () => {
         setActive(!isActive)
     }
 
-    const toggleNameEditMode = () => {
+    const toggleNameEditMode: VoidFunction = () => {
         setEditMode({ ...editMode, 0: !editMode[0] })
     }
-    const toggleDescEditMode = () => {
+    const toggleDescEditMode: VoidFunction = () => {
         setEditMode({ ...editMode, 1: !editMode[1] })
     }
 

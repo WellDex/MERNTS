@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
+import { VoidFunction } from '../../types/commonTypes'
 import { EditField } from "../common/EditField"
 import { NameTodo } from "./NameTodo"
 
 type ShowAndEditTodoPropsType = {
     config: string,
-    toggleNameEditMode: () => void,
-    toggleDescEditMode: () => void,
-    update: () => void,
+    toggleNameEditMode: VoidFunction,
+    toggleDescEditMode: VoidFunction,
+    update: VoidFunction,
     changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void,
     editMode: boolean,
     text: string | undefined,
@@ -16,7 +17,7 @@ type ShowAndEditTodoPropsType = {
 
 export const ShowAndEditTodo: React.FC<ShowAndEditTodoPropsType> = (props) => {
 
-    const changeEditMode = () => {
+    const changeEditMode: VoidFunction = () => {
         if (props.config === 'name') {
             props.toggleNameEditMode()
         } else {
@@ -24,7 +25,7 @@ export const ShowAndEditTodo: React.FC<ShowAndEditTodoPropsType> = (props) => {
         }
     }
 
-    const changeField = () => {
+    const changeField:VoidFunction = () => {
         props.update()
     }
 

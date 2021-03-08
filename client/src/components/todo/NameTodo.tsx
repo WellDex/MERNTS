@@ -1,8 +1,9 @@
 import React from 'react'
+import { VoidFunction } from '../../types/commonTypes'
 
 type NameTodoPropsType = {
-    changeInputEditMode: () => void,
-    name: string| undefined,
+    changeInputEditMode: VoidFunction,
+    name: string | undefined,
     config: string,
     isActive: boolean
 }
