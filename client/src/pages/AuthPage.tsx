@@ -8,12 +8,19 @@ import { AuthContext } from '../context/AuthContext'
 import { useHistory } from 'react-router'
 import { VoidFunction } from '../types/commonTypes'
 
+type FormType = {
+    name: string
+    lastName: string
+    email: string
+    password: string
+}
+
 export const AuthPage: React.FC = () => {
     const auth = useContext(AuthContext)
     const message = useMessage()
     const history = useHistory()
     const { loading, error, req, clearError } = useRequest()
-    const [form, setForm] = useState({ name: '', lastName: '', email: '', password: '' })
+    const [form, setForm] = useState<FormType>({ name: '', lastName: '', email: '', password: '' })
 
     useEffect(() => {
         message(error)
