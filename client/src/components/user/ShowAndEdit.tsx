@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
+import { VoidFunction } from '../../types/commonTypes'
 import { EditField } from "../common/EditField"
 
 type ShowAndEditPropsType = {
-    update: () => void,
+    update: VoidFunction,
     text: string,
     loading: boolean,
     config: string,
-    changeHandler: (e:React.ChangeEvent<HTMLInputElement>) => void
+    changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const ShowAndEdit: React.FC<ShowAndEditPropsType> = (props) => {
     const [editMode, setEditMode] = useState<boolean>(false)
 
-    const changeField = () => {
+    const changeField: VoidFunction = () => {
         props.update()
         setEditMode(!editMode)
     }

@@ -2,12 +2,13 @@ import React, {useState} from 'react'
 import {ShowAndEdit} from "./ShowAndEdit"
 import {EditField} from "../common/EditField"
 import {IUser} from '../../Interface/IUser'
+import { VoidFunction } from '../../types/commonTypes'
 
 type ProfileInfoPropsType = {
-    updatePassword: () => void,
+    updatePassword: VoidFunction,
     user: IUser,
     changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    updateProfile: () => void,
+    updateProfile: VoidFunction,
     loading: boolean,
     deleteUser: (e: React.MouseEvent) => void
 }
@@ -15,7 +16,7 @@ type ProfileInfoPropsType = {
 export const ProfileInfo: React.FC<ProfileInfoPropsType> = (props) => {
     const [editMode, setEditMode] = useState<Boolean>(false)
 
-    const changePassword = () => {
+    const changePassword: VoidFunction = () => {
         props.updatePassword()
 
         setEditMode(!editMode)
