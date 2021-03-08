@@ -3,13 +3,19 @@ import { useRequest } from "../hooks/hookRequests"
 import { AuthContext } from "../context/AuthContext"
 import { useMessage } from "../hooks/messageHook"
 import { useHistory } from "react-router-dom"
+import { VoidFunction } from '../types/commonTypes'
+
+type TodoType = {
+    name: string,
+    description: string
+}
 
 export const CreateTodo: React.FC = (props) => {
     const auth = useContext(AuthContext)
     const message = useMessage()
     let history = useHistory()
     const { error, req, clearError, loading } = useRequest()
-    const [Todo, setTodo] = useState({ name: '', description: '' })
+    const [Todo, setTodo] = useState<TodoType>({ name: '', description: '' })
 
 
     useEffect(() => {
@@ -17,7 +23,7 @@ export const CreateTodo: React.FC = (props) => {
         clearError()
     }, [error, message, clearError])
 
-    const createTodo = async () => {
+    const createTodo: VoidFunction = async () => {
         try {
             const data = await req('/api/todo/create', 'POST', { ...Todo }, { Authorization: `Baerer ${auth.token}` })
 
