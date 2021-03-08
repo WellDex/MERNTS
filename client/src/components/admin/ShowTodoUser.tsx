@@ -1,9 +1,10 @@
 import React from 'react'
 import { ITodo } from '../../Interface/ITodo'
+import { VoidFunction } from '../../types/commonTypes'
 
 type ShowTodoUsersPropsType = {
     todos: Array<ITodo>,
-    closeTodo: () => void
+    closeTodo: VoidFunction
 }
 
 export const ShowTodoUsers: React.FC<ShowTodoUsersPropsType> = (props) => {

@@ -7,16 +7,17 @@ import { Users } from '../components/admin/Users'
 import { ShowTodoUsers } from '../components/admin/ShowTodoUser'
 import { IUser } from '../Interface/IUser'
 import { ITodo } from '../Interface/ITodo'
+import { VoidFunction } from '../types/commonTypes'
 
 export const Admin: React.FC = () => {
     const { token } = useContext(AuthContext)
     const message = useMessage()
     const { loading, error, req, clearError } = useRequest()
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState<Boolean>(false)
     const [users, setUsers] = useState<Array<IUser>>([])
     const [todos, setTodos] = useState<Array<ITodo>>([])
 
-    const getUsers = useCallback(async () => {
+    const getUsers: VoidFunction = useCallback(async () => {
         try {
             const data = await req('/api/user/all', 'GET', null, {
                 Authorization: `Bearer ${token}`
@@ -32,6 +33,7 @@ export const Admin: React.FC = () => {
     useEffect(() => {
         getUsers()
     }, [getUsers])
+
     useEffect(() => {
         message(error)
         clearError()
