@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
+import { VoidFunction } from "../types/commonTypes"
 
 const storageName = 'userData'
 
@@ -9,7 +10,7 @@ type LocalStorageType = {
 }
 
 type UseAuthType = () => {
-    logout: () => void,
+    logout: VoidFunction,
     ready: boolean,
     login: (jwtToken: string, id: number, email: string) => void,
     userId: number | null,

@@ -1,7 +1,8 @@
-import {useCallback, useState} from 'react'
+import { useCallback, useState } from 'react'
+import { VoidFunction } from '../types/commonTypes'
 
 type UseRequestType = () => {
-    clearError: () => void
+    clearError: VoidFunction
     loading: boolean
     error: string | null
     req: (url: string, method?: string, body?: any, headers?: any) => Promise<any>
@@ -19,7 +20,7 @@ export const useRequest: UseRequestType = () => {
                 headers['Content-Type'] = 'application/json'
             }
 
-            const res = await fetch(url, {method, body, headers})
+            const res = await fetch(url, { method, body, headers })
             const data = await res.json()
 
             if (!res.ok) {
@@ -39,5 +40,5 @@ export const useRequest: UseRequestType = () => {
 
     const clearError = useCallback(() => setError(null), [])
 
-    return {loading, req, error, clearError}
+    return { loading, req, error, clearError }
 }
