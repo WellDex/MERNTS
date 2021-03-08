@@ -1,10 +1,11 @@
 import React from 'react'
+import { VoidFunction } from '../../types/commonTypes'
 
 type EditFieldPropsType = {
     config: string,
     changeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    text: string| undefined,
-    changeField: () => void,
+    text: string | undefined,
+    changeField: VoidFunction,
     loading: boolean
 }
 
