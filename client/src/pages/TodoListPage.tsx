@@ -49,7 +49,9 @@ export const TodoListPage = () => {
     //test2
     //test2
 
-    const changeIsCondition: (id: number) => void = async (id: number) => {
+    const test: VoidFunction = () => { }
+
+    const changeIsCondition = async (id: number): Promise<void> => {
         try {
             const data = await req('/api/todo/toggleCondition', 'POST', { id })
 
